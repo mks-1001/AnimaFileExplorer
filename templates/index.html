@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimaFileExplorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background">
+        <svg class="graph-pattern" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="smallGrid" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+                </pattern>
+                <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <rect width="100" height="100" fill="url(#smallGrid)"/>
+                    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+            <g class="nodes"></g>
+            <g class="links"></g>
+        </svg>
+    </div>
+    <header>
+        <h1>AnimaFileExplorer</h1>
+    </header>
+    <div class="container">
+        <div class="box animal-box">
+            <h2>Explore Animal GIFs</h2>
+            <div class="checkbox-group">
+                <label><input type="radio" name="animal" value="cat"> Cat</label>
+                <label><input type="radio" name="animal" value="dog"> Dog</label>
+                <label><input type="radio" name="animal" value="elephant"> Elephant</label>
+            </div>
+            <div id="gif-container"></div>
+        </div>
+        <div class="box upload-box">
+            <h2>Upload and Analyze File</h2>
+            <div class="file-input-wrapper">
+                <input type="file" id="file-input">
+                <label for="file-input" class="file-input-label">Choose a file</label>
+            </div>
+            <button onclick="uploadFile()" class="upload-btn">Upload</button>
+            <div id="file-info"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
